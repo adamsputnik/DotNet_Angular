@@ -39,21 +39,21 @@ namespace DatingApp.API.Controllers
             return StatusCode(201);
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult>Login(UserForLoginDTO userForLoginDTO)
-        {
-            var userFromRepo = await _repo.Login(userForLoginDTO.Username, userForLoginDTO.Password);
+        // [HttpPost("login")]
+        // public async Task<IActionResult>Login(UserForLoginDTO userForLoginDTO)
+        // {
+        //     var userFromRepo = await _repo.Login(userForLoginDTO.Username, userForLoginDTO.Password);
 
-            if (userFromRepo == null)
-                return Unauthorized();
+        //     if (userFromRepo == null)
+        //         return Unauthorized();
 
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
-            };
+        //     var claims = new[]
+        //     {
+        //         new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
+        //         new Claim(ClaimTypes.Name, userFromRepo.Username)
+        //     };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes())
-        }
+        //     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes());
+        // }
     }
 }
